@@ -54,16 +54,17 @@ body {
     white-space: nowrap;
 }
 
-/* 🔹 MENÚ EN PC (Horizontal) */
+/* 🔹 MENÚ EN PC (Horizontal con espacio) */
 .nav-links {
     display: flex; /* 🔹 Asegura que el menú esté en fila */
     list-style: none;
-    gap: 20px; /* 🔹 Espaciado entre los enlaces */
+    gap: 50px; /* 🔹 Mayor separación entre opciones */
 }
 
 /* 🔹 Asegurar que los elementos sean horizontales */
 .nav-links ul {
-    display: flex; /* 🔹 Organiza los elementos en fila */
+    display: flex;
+    gap: 50px;
     padding: 0;
     margin: 0;
 }
@@ -72,12 +73,7 @@ body {
     display: inline-block;
 }
 
-/* 🔹 Asegurar que los enlaces sean visibles en PC */
-.nav-links li {
-    display: inline-block;
-}
-
-/* 🔹 Menú hamburguesa (Oculto en PC) */
+/* 🔹 MENÚ HAMBURGUESA (Oculto en PC) */
 .menu-btn {
     display: none;
     font-size: 24px;
@@ -87,7 +83,7 @@ body {
     cursor: pointer;
 }
 
-/* 🔹 MENÚ EN MÓVIL (Oculto por defecto) */
+/* 🔹 MENÚ EN MÓVIL (Vertical cuando se despliega) */
 @media screen and (max-width: 768px) {
     .menu-btn {
         display: block; /* 🔹 Mostramos el botón ☰ en móviles */
@@ -106,6 +102,7 @@ body {
         border: 2px solid var(--gold);
         padding: 10px;
         border-radius: 5px;
+        gap: 15px; /* 🔹 Espacio entre los elementos del menú cuando se despliega */
     }
 
     .nav-links.active {
@@ -226,7 +223,7 @@ body {
     border-top: 2px solid var(--gold);
 }
 
-/* 🔹 Scroll completamente negro */
+/* 🔹 BARRA DE DESPLAZAMIENTO NEGRA */
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -236,59 +233,13 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #000; /* 🔹 Barra de desplazamiento negra */
+    background: #333; /* 🔹 Barra gris oscuro */
     border-radius: 5px;
 }
 
 /* 🔹 En Firefox */
 * {
     scrollbar-width: thin;
-    scrollbar-color: #000 #000; /* 🔹 Fondo negro con barra negra */
-}
-
-/* 🔹 MENÚ EN PC (Horizontal y con espacio) */
-.nav-links {
-    display: flex; /* 🔹 Asegura que los elementos estén en fila */
-    list-style: none;
-    gap: 30px; /* 🔹 Aumenta la separación entre los elementos en PC */
-}
-
-.nav-links li {
-    display: inline-block;
-}
-
-/* 🔹 MENÚ EN MÓVIL (Vertical cuando se despliega) */
-@media screen and (max-width: 768px) {
-    .nav-links {
-        display: none; /* 🔹 Ocultamos el menú en móviles */
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background: var(--dark-gray);
-        border: 2px solid var(--gold);
-        padding: 10px;
-        border-radius: 5px;
-        gap: 15px; /* 🔹 Espacio entre los elementos del menú cuando se despliega */
-    }
-
-    .nav-links.active {
-        display: flex; /* 🔹 Muestra el menú cuando esté activo */
-    }
-
-    .nav-links ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .nav-links li {
-        margin: 10px 0;
-    }
-
-    .nav-links a {
-        color: var(--gold);
-        text-decoration: none;
-    }
+    scrollbar-color: #333 #000; /* 🔹 Barra gris oscuro con fondo negro */
 }
 
