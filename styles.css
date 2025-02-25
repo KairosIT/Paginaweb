@@ -1,9 +1,9 @@
 /* 🔹 Ajustes de compatibilidad */
 html {
-    -webkit-text-size-adjust: 100%; /* Para Safari y Firefox */
-    -moz-text-size-adjust: 100%;    /* Para versiones antiguas de Firefox */
-    -ms-text-size-adjust: 100%;     /* Para versiones antiguas de Edge */
-    text-size-adjust: 100%;         /* Para Chrome, Edge y navegadores modernos */
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 /* 🔹 Paleta de colores */
@@ -30,8 +30,8 @@ body {
     padding: 15px 20px;
     background-color: var(--dark-gray);
     border-bottom: 2px solid var(--gold);
-    flex-wrap: wrap; /* 🔹 Permite que los elementos bajen en móviles */
-    gap: 10px; /* Espacio entre los elementos */
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 /* 🔹 Contenedor del logo y texto */
@@ -39,59 +39,76 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
-    flex-grow: 1; /* 🔹 Permite que el logo y el texto ocupen su propio espacio */
+    flex-grow: 1;
 }
 
 /* 🔹 Tamaño del logo */
 .logo-container img {
-    width: 80px; /* 🔹 Aumentamos a 80px para que se vea mejor */
+    width: 80px;
     height: auto;
 }
 
 /* 🔹 Tamaño del texto del título */
 .logo-container h1 {
-    font-size: 1.8rem; /* 🔹 Ajuste para móviles */
-    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    font-size: 1.8rem;
+    white-space: nowrap;
 }
 
-/* 🔹 Menú de navegación */
+/* 🔹 MENÚ EN PC */
 .nav-links {
     list-style: none;
     display: flex;
     gap: 15px;
-    flex-wrap: wrap; /* 🔹 Permite que el menú baje de línea si es necesario */
 }
 
-.nav-links li a {
-    text-decoration: none;
-    color: var(--text-light);
-    transition: color 0.3s ease;
+/* 🔹 Menú hamburguesa (Oculto en PC) */
+.menu-btn {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: var(--gold);
+    cursor: pointer;
 }
 
-/* 🔹 RESPONSIVE: Ajustes en móviles */
+/* 🔹 MENÚ EN MÓVIL (Oculto por defecto) */
 @media screen and (max-width: 768px) {
-    .header {
-        flex-direction: column; /* 🔹 Hace que los elementos se acomoden en columna */
-        text-align: center;
-        padding: 10px;
-    }
-
-    .logo-container {
-        justify-content: center;
-        margin-bottom: 10px;
-    }
-
-    .logo-container img {
-        width: 70px; /* 🔹 Reduce el logo en pantallas más pequeñas */
-    }
-
-    .logo-container h1 {
-        font-size: 1.6rem; /* 🔹 Ajuste para móviles */
+    .menu-btn {
+        display: block; /* 🔹 Mostramos el botón ☰ en móviles */
+        position: absolute;
+        right: 20px;
+        top: 20px;
     }
 
     .nav-links {
-        flex-direction: column; /* 🔹 Hace que los enlaces del menú se acomoden en columna */
-        gap: 15px; /* 🔹 Más espacio entre los botones en móvil */
+        display: none; /* 🔹 Ocultamos el menú en móviles */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: var(--dark-gray);
+        border: 2px solid var(--gold);
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .nav-links.active {
+        display: flex; /* 🔹 Muestra el menú cuando esté activo */
+    }
+
+    .nav-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-links a {
+        color: var(--gold);
+        text-decoration: none;
     }
 }
 
@@ -101,7 +118,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('fondo.jpg?v=1.0') no-repeat center center/cover; /* Cache Busting */
+    background: url('fondo.jpg?v=1.0') no-repeat center center/cover;
     text-align: center;
 }
 
