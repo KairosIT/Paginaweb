@@ -54,11 +54,22 @@ body {
     white-space: nowrap;
 }
 
-/* 🔹 MENÚ EN PC (HORIZONTAL) */
+/* 🔹 MENÚ EN PC (Horizontal) */
 .nav-links {
     display: flex; /* 🔹 Asegura que el menú esté en fila */
     list-style: none;
-    gap: 15px;
+    gap: 20px; /* 🔹 Espaciado entre los enlaces */
+}
+
+/* 🔹 Asegurar que los elementos sean horizontales */
+.nav-links ul {
+    display: flex; /* 🔹 Organiza los elementos en fila */
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    display: inline-block;
 }
 
 /* 🔹 Asegurar que los enlaces sean visibles en PC */
