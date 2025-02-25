@@ -124,13 +124,13 @@ body {
     }
     
     .nav-links li {
-        margin: 2px 0; /* 🔹 Menos espacio entre opciones */
+        margin: 0; /* 🔹 Eliminamos espacio extra entre opciones */
         text-align: center; /* 🔹 Centramos los textos */
         width: 100%;
     }
     
     .nav-links a {
-        padding: 6px; /* 🔹 Ajuste de padding para mejor visualización */
+        padding: 4px 0; /* 🔹 Reducimos el espacio vertical entre opciones */
         width: 100%;
         text-align: center;
     }
