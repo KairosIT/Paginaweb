@@ -1,3 +1,4 @@
+/* 🔹 Ajustes de compatibilidad */
 html {
     -webkit-text-size-adjust: 100%; /* Para Safari y Firefox */
     -moz-text-size-adjust: 100%;    /* Para versiones antiguas de Firefox */
@@ -29,7 +30,7 @@ body {
     padding: 15px 20px;
     background-color: var(--dark-gray);
     border-bottom: 2px solid var(--gold);
-    flex-wrap: nowrap; /* No permite que los elementos se acomoden en varias líneas */
+    flex-wrap: wrap; /* 🔹 Permite que los elementos bajen en móviles */
     gap: 10px; /* Espacio entre los elementos */
 }
 
@@ -38,18 +39,18 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
-    flex-grow: 1; /* Permite que el logo y el texto ocupen más espacio */
+    flex-grow: 1; /* 🔹 Permite que el logo y el texto ocupen su propio espacio */
 }
 
 /* 🔹 Tamaño del logo */
 .logo-container img {
-    width: 70px; /* Mantiene un tamaño visible en móviles */
+    width: 80px; /* 🔹 Aumentamos a 80px para que se vea mejor */
     height: auto;
 }
 
 /* 🔹 Tamaño del texto del título */
 .logo-container h1 {
-    font-size: 1.8rem; /* Ajuste para móviles */
+    font-size: 1.8rem; /* 🔹 Ajuste para móviles */
     white-space: nowrap; /* Evita que el texto se divida en varias líneas */
 }
 
@@ -58,7 +59,7 @@ body {
     list-style: none;
     display: flex;
     gap: 15px;
-    flex-wrap: wrap; /* Permite que el menú baje de línea si es necesario */
+    flex-wrap: wrap; /* 🔹 Permite que el menú baje de línea si es necesario */
 }
 
 .nav-links li a {
@@ -70,7 +71,7 @@ body {
 /* 🔹 RESPONSIVE: Ajustes en móviles */
 @media screen and (max-width: 768px) {
     .header {
-        flex-direction: column; /* Hace que los elementos se acomoden en columna */
+        flex-direction: column; /* 🔹 Hace que los elementos se acomoden en columna */
         text-align: center;
         padding: 10px;
     }
@@ -80,12 +81,19 @@ body {
         margin-bottom: 10px;
     }
 
+    .logo-container img {
+        width: 70px; /* 🔹 Reduce el logo en pantallas más pequeñas */
+    }
+
+    .logo-container h1 {
+        font-size: 1.6rem; /* 🔹 Ajuste para móviles */
+    }
+
     .nav-links {
-        flex-direction: column; /* Hace que los enlaces del menú se acomoden en columna */
-        gap: 10px;
+        flex-direction: column; /* 🔹 Hace que los enlaces del menú se acomoden en columna */
+        gap: 15px; /* 🔹 Más espacio entre los botones en móvil */
     }
 }
-
 
 /* 🔹 Sección Inicio */
 .inicio {
