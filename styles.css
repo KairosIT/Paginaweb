@@ -226,24 +226,24 @@ body {
     border-top: 2px solid var(--gold);
 }
 
-/* 🔹 Personalizar la barra de desplazamiento (scroll) */
+/* 🔹 Scroll completamente negro */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #000; /* 🔹 Fondo negro para la barra */
+    background: #000; /* 🔹 Fondo negro */
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--gold); /* 🔹 Color dorado para la barra */
+    background: #000; /* 🔹 Barra de desplazamiento negra */
     border-radius: 5px;
 }
 
 /* 🔹 En Firefox */
 * {
     scrollbar-width: thin;
-    scrollbar-color: var(--gold) #000; /* 🔹 Dorado con fondo negro */
+    scrollbar-color: #000 #000; /* 🔹 Fondo negro con barra negra */
 }
 
 /* 🔹 MENÚ EN PC (Horizontal y con espacio) */
