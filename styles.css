@@ -54,11 +54,16 @@ body {
     white-space: nowrap;
 }
 
-/* 🔹 MENÚ EN PC */
+/* 🔹 MENÚ EN PC (HORIZONTAL) */
 .nav-links {
+    display: flex; /* 🔹 Asegura que el menú esté en fila */
     list-style: none;
-    display: flex;
     gap: 15px;
+}
+
+/* 🔹 Asegurar que los enlaces sean visibles en PC */
+.nav-links li {
+    display: inline-block;
 }
 
 /* 🔹 Menú hamburguesa (Oculto en PC) */
