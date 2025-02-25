@@ -1,46 +1,139 @@
+/* Paleta de colores */
+:root {
+    --gold: #D4AF37;
+    --dark-gray: #2C2F36;
+    --text-light: #E0E0E0;
+}
+
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
+    background-color: var(--dark-gray);
+    color: var(--text-light);
     text-align: center;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-}
-
-h1 {
     margin: 0;
 }
 
-section {
-    margin: 20px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+/* Encabezado */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--dark-gray);
+    border-bottom: 2px solid var(--gold);
 }
 
-ul {
-    list-style-type: none;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: var(--gold);
+}
+
+/* Sección Inicio */
+.inicio {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('fondo.jpg') no-repeat center center/cover;
+    text-align: center;
+}
+
+.inicio-content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Secciones */
+.section {
+    padding: 50px 20px;
+    border-top: 2px solid var(--gold);
+}
+
+/* Lista de servicios */
+.service-list {
+    list-style: none;
     padding: 0;
 }
 
-li {
-    background: #333;
-    color: white;
+.service-list li {
+    background: var(--gold);
+    color: var(--dark-gray);
     padding: 10px;
     margin: 5px;
     border-radius: 5px;
 }
 
-footer {
-    background-color: #222;
-    color: white;
-    padding: 10px;
-    margin-top: 20px;
+/* Formulario de contacto */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin: auto;
 }
 
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    border: 2px solid var(--gold);
+    background-color: var(--dark-gray);
+    color: var(--text-light);
+    border-radius: 5px;
+}
+
+/* Botón */
+.gold-button {
+    background-color: var(--gold);
+    color: var(--dark-gray);
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.gold-button:hover {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+    transform: scale(1.05);
+}
+
+/* Botón "Volver Arriba" */
+.btn-arriba {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--gold);
+    color: var(--dark-gray);
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-arriba:hover {
+    box-shadow: 0 0 10px var(--gold);
+}
+
+/* Pie de página */
+.footer {
+    background: var(--dark-gray);
+    padding: 10px;
+    border-top: 2px solid var(--gold);
+}
