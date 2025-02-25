@@ -21,7 +21,7 @@ body {
     margin: 0;
 }
 
-/* 🔹 Encabezado */
+/* 🔹 Estilos del encabezado */
 .header {
     display: flex;
     justify-content: space-between;
@@ -29,12 +29,36 @@ body {
     padding: 15px 20px;
     background-color: var(--dark-gray);
     border-bottom: 2px solid var(--gold);
+    flex-wrap: nowrap; /* No permite que los elementos se acomoden en varias líneas */
+    gap: 10px; /* Espacio entre los elementos */
 }
 
+/* 🔹 Contenedor del logo y texto */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1; /* Permite que el logo y el texto ocupen más espacio */
+}
+
+/* 🔹 Tamaño del logo */
+.logo-container img {
+    width: 70px; /* Mantiene un tamaño visible en móviles */
+    height: auto;
+}
+
+/* 🔹 Tamaño del texto del título */
+.logo-container h1 {
+    font-size: 1.8rem; /* Ajuste para móviles */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+/* 🔹 Menú de navegación */
 .nav-links {
     list-style: none;
     display: flex;
     gap: 15px;
+    flex-wrap: wrap; /* Permite que el menú baje de línea si es necesario */
 }
 
 .nav-links li a {
@@ -43,9 +67,25 @@ body {
     transition: color 0.3s ease;
 }
 
-.nav-links li a:hover {
-    color: var(--gold);
+/* 🔹 RESPONSIVE: Ajustes en móviles */
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Hace que los elementos se acomoden en columna */
+        text-align: center;
+        padding: 10px;
+    }
+
+    .logo-container {
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column; /* Hace que los enlaces del menú se acomoden en columna */
+        gap: 10px;
+    }
 }
+
 
 /* 🔹 Sección Inicio */
 .inicio {
