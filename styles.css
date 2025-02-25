@@ -107,13 +107,6 @@ body {
         width: 180px; /* 🔹 Ajuste de ancho */
     }
 
-    .nav-links.active {
-        display: flex; /* 🔹 Muestra el menú cuando esté activo */
-        flex-direction: column; /* 🔹 Asegura que esté en columna */
-        align-items: flex-start; /* 🔹 Alinea los elementos a la izquierda */
-        padding: 5px 10px; /* 🔹 Reducimos el padding interno */
-    }
-
     .nav-links ul {
         display: flex;
         flex-direction: column; /* 🔹 Asegura que el menú se muestre en columna */
@@ -122,14 +115,24 @@ body {
         margin: 0;
     }
 
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* 🔹 Centramos las opciones */
+        padding: 5px 0; /* 🔹 Reducimos el padding interno */
+        width: 150px; /* 🔹 Menú más compacto */
+    }
+    
     .nav-links li {
-        margin: 5px 0; /* 🔹 Reducimos el espacio entre opciones */
-        text-align: left;
+        margin: 2px 0; /* 🔹 Menos espacio entre opciones */
+        text-align: center; /* 🔹 Centramos los textos */
         width: 100%;
     }
-
+    
     .nav-links a {
-        padding: 8px; /* 🔹 Ajuste de padding para mejor visualización */
+        padding: 6px; /* 🔹 Ajuste de padding para mejor visualización */
+        width: 100%;
+        text-align: center;
     }
 }
 
