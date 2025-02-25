@@ -226,13 +226,13 @@ body {
     border-top: 2px solid var(--gold);
 }
 
-/* 🔹 Personalizar la barra de desplazamiento en navegadores WebKit (Chrome, Edge, Safari) */
+/* 🔹 Personalizar la barra de desplazamiento (scroll) */
 ::-webkit-scrollbar {
-    width: 10px; /* 🔹 Ancho de la barra */
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #2C2F36; /* 🔹 Color de fondo de la barra */
+    background: #000; /* 🔹 Fondo negro para la barra */
 }
 
 ::-webkit-scrollbar-thumb {
@@ -242,5 +242,53 @@ body {
 
 /* 🔹 En Firefox */
 * {
-    scrollbar-color: var(--gold) #2C2F36; /* 🔹 Dorado con fondo oscuro */
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) #000; /* 🔹 Dorado con fondo negro */
 }
+
+/* 🔹 MENÚ EN PC (Horizontal y con espacio) */
+.nav-links {
+    display: flex; /* 🔹 Asegura que los elementos estén en fila */
+    list-style: none;
+    gap: 30px; /* 🔹 Aumenta la separación entre los elementos en PC */
+}
+
+.nav-links li {
+    display: inline-block;
+}
+
+/* 🔹 MENÚ EN MÓVIL (Vertical cuando se despliega) */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none; /* 🔹 Ocultamos el menú en móviles */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: var(--dark-gray);
+        border: 2px solid var(--gold);
+        padding: 10px;
+        border-radius: 5px;
+        gap: 15px; /* 🔹 Espacio entre los elementos del menú cuando se despliega */
+    }
+
+    .nav-links.active {
+        display: flex; /* 🔹 Muestra el menú cuando esté activo */
+    }
+
+    .nav-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-links a {
+        color: var(--gold);
+        text-decoration: none;
+    }
+}
+
