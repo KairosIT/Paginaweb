@@ -226,3 +226,21 @@ body {
     border-top: 2px solid var(--gold);
 }
 
+/* 🔹 Personalizar la barra de desplazamiento en navegadores WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 10px; /* 🔹 Ancho de la barra */
+}
+
+::-webkit-scrollbar-track {
+    background: #2C2F36; /* 🔹 Color de fondo de la barra */
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gold); /* 🔹 Color dorado para la barra */
+    border-radius: 5px;
+}
+
+/* 🔹 En Firefox */
+* {
+    scrollbar-color: var(--gold) #2C2F36; /* 🔹 Dorado con fondo oscuro */
+}
