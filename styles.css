@@ -32,6 +32,7 @@ body {
     border-bottom: 2px solid var(--gold);
     flex-wrap: wrap;
     gap: 10px;
+    position: relative; /* 🔹 Asegura que el botón del menú se posicione correctamente */
 }
 
 /* 🔹 Contenedor del logo y texto */
@@ -76,30 +77,34 @@ body {
 /* 🔹 MENÚ HAMBURGUESA (Oculto en PC) */
 .menu-btn {
     display: none;
-    font-size: 30px; /* 🔹 Aumenta el tamaño del botón */
-    background: none;
-    border: none;
-    color: var(--gold);
-    cursor: pointer;
-    position: absolute;
-    right: 20px;
-    top: 50%; /* 🔹 Centra el botón verticalmente */
-    transform: translateY(-50%); /* 🔹 Ajuste para centrarlo mejor */
 }
 
-/* 🔹 MENÚ EN MÓVIL (Vertical cuando se despliega) */
+/* 🔹 MENÚ EN MÓVIL */
 @media screen and (max-width: 768px) {
+    .menu-btn {
+        display: block; /* 🔹 Hace visible el botón ☰ */
+        font-size: 35px; /* 🔹 Botón más grande */
+        background: none;
+        border: none;
+        color: var(--gold);
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
     .nav-links {
         display: none; /* 🔹 Ocultamos el menú en móviles */
         flex-direction: column;
         position: absolute;
         top: 60px;
-        right: 20px;
+        right: 10px;
         background: var(--dark-gray);
         border: 2px solid var(--gold);
         padding: 10px;
         border-radius: 5px;
-        width: 200px; /* 🔹 Ancho del menú desplegable */
+        width: 180px; /* 🔹 Ajuste de ancho */
     }
 
     .nav-links.active {
@@ -109,16 +114,17 @@ body {
     }
 
     .nav-links ul {
-        list-style: none;
+        display: flex;
+        flex-direction: column; /* 🔹 Asegura que el menú se muestre en columna */
+        width: 100%;
         padding: 0;
         margin: 0;
-        width: 100%;
     }
 
     .nav-links li {
-        margin: 10px 0;
-        text-align: left;
         width: 100%;
+        text-align: left;
+        margin: 5px 0;
     }
 
     .nav-links a {
