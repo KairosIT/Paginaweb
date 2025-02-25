@@ -1,6 +1,8 @@
-/* 🔹 CORRECCIÓN: Asegurar compatibilidad en todos los navegadores */
 html {
-    text-size-adjust: 100%; /* Compatible con Chrome, Firefox, Edge y Safari */
+    -webkit-text-size-adjust: 100%; /* Para Safari y Firefox */
+    -moz-text-size-adjust: 100%;    /* Para versiones antiguas de Firefox */
+    -ms-text-size-adjust: 100%;     /* Para versiones antiguas de Edge */
+    text-size-adjust: 100%;         /* Para Chrome, Edge y navegadores modernos */
 }
 
 /* 🔹 Paleta de colores */
