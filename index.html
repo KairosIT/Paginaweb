@@ -6,7 +6,7 @@
     <meta name="description" content="Kairos IT SAS - Soluciones tecnológicas innovadoras para tu empresa.">
     <title>Kairos IT SAS</title>
     
-    <!-- Tailwind CSS (Versión Estable) -->
+    <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
     
     <!-- Archivo CSS Personalizado -->
@@ -16,15 +16,17 @@
 
     <!-- Encabezado -->
     <header class="header">
-        
-        <!-- 🔹 SE AGREGA UN DIV QUE AGRUPA LOGO Y TEXTO PARA EVITAR SOLAPAMIENTO -->
         <div class="logo-container">
-            <img src="logo.png" alt="Logo Kairos IT SAS" class="logo">
+            <img src="logo.webp" alt="Logo Kairos IT SAS" class="logo">
             <h1 class="gold-text">Kairos IT SAS</h1>
         </div>
 
-        <nav>
-            <ul class="nav-links">
+        <!-- 🔹 BOTÓN DEL MENÚ HAMBURGUESA (SOLO EN MÓVILES) -->
+        <button id="menu-btn" class="menu-btn">☰</button>
+
+        <!-- 🔹 MENÚ DE NAVEGACIÓN -->
+        <nav id="nav-menu" class="nav-links">
+            <ul>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#servicios">Servicios</a></li>
@@ -78,23 +80,10 @@
         &copy; 2025 Kairos IT SAS - Todos los derechos reservados.
     </footer>
 
-    <!-- Script para el Botón "Volver Arriba" -->
-    <script>
-        const btnArriba = document.getElementById("btn-arriba");
-        window.onscroll = function () {
-            if (document.documentElement.scrollTop > 300) {
-                btnArriba.style.display = "block";
-            } else {
-                btnArriba.style.display = "none";
-            }
-        };
-        btnArriba.onclick = function () {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        };
-    </script>
+    <!-- Script para el Menú y "Volver Arriba" -->
+    <script src="script.js"></script>
 
 </body>
 </html>
-
 
 
