@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kairos IT SAS - Soluciones tecnológicas innovadoras para tu empresa.">
     <title>Kairos IT SAS</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Versión Estable) -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Archivo CSS Personalizado -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="bg-dark-gray text-text-light">
 
     <!-- Encabezado -->
     <header class="header">
@@ -29,21 +33,21 @@
     <!-- Sección Inicio -->
     <section id="inicio" class="inicio">
         <div class="inicio-content">
-            <h2 class="gold-text">Soluciones Tecnológicas en el Momento Oportuno</h2>
-            <p>Innovamos en tecnología para potenciar tu empresa.</p>
-            <a href="#contacto" class="gold-button">Contáctanos</a>
+            <h2 class="gold-text text-4xl font-bold">Soluciones Tecnológicas en el Momento Oportuno</h2>
+            <p class="mt-4">Innovamos en tecnología para potenciar tu empresa.</p>
+            <a href="#contacto" class="gold-button mt-6 inline-block">Contáctanos</a>
         </div>
     </section>
 
     <!-- Sección Nosotros -->
     <section id="nosotros" class="section">
-        <h2 class="gold-text">Sobre Nosotros</h2>
+        <h2 class="gold-text text-3xl font-bold">Sobre Nosotros</h2>
         <p>Somos una empresa especializada en desarrollo de software y soporte tecnológico.</p>
     </section>
 
     <!-- Sección Servicios -->
     <section id="servicios" class="section">
-        <h2 class="gold-text">Nuestros Servicios</h2>
+        <h2 class="gold-text text-3xl font-bold">Nuestros Servicios</h2>
         <ul class="service-list">
             <li>🖥️ Desarrollo de Software</li>
             <li>📡 Infraestructura y Redes</li>
@@ -53,7 +57,7 @@
 
     <!-- Sección Contacto -->
     <section id="contacto" class="section">
-        <h2 class="gold-text">Contáctanos</h2>
+        <h2 class="gold-text text-3xl font-bold">Contáctanos</h2>
         <p>Escríbenos para más información.</p>
         <form action="https://formspree.io/f/tu_correo" method="POST" class="contact-form">
             <input type="text" name="nombre" placeholder="Tu Nombre" required>
@@ -71,8 +75,8 @@
         &copy; 2025 Kairos IT SAS - Todos los derechos reservados.
     </footer>
 
+    <!-- Script para el Botón "Volver Arriba" -->
     <script>
-        // Mostrar el botón "Volver arriba" cuando el usuario baja
         const btnArriba = document.getElementById("btn-arriba");
         window.onscroll = function () {
             if (document.documentElement.scrollTop > 300) {
@@ -81,8 +85,6 @@
                 btnArriba.style.display = "none";
             }
         };
-
-        // Desplazar hacia arriba cuando se hace clic
         btnArriba.onclick = function () {
             window.scrollTo({ top: 0, behavior: "smooth" });
         };
