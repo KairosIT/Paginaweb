@@ -76,22 +76,19 @@ body {
 /* 🔹 MENÚ HAMBURGUESA (Oculto en PC) */
 .menu-btn {
     display: none;
-    font-size: 24px;
+    font-size: 30px; /* 🔹 Aumenta el tamaño del botón */
     background: none;
     border: none;
     color: var(--gold);
     cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 50%; /* 🔹 Centra el botón verticalmente */
+    transform: translateY(-50%); /* 🔹 Ajuste para centrarlo mejor */
 }
 
 /* 🔹 MENÚ EN MÓVIL (Vertical cuando se despliega) */
 @media screen and (max-width: 768px) {
-    .menu-btn {
-        display: block; /* 🔹 Mostramos el botón ☰ en móviles */
-        position: absolute;
-        right: 20px;
-        top: 20px;
-    }
-
     .nav-links {
         display: none; /* 🔹 Ocultamos el menú en móviles */
         flex-direction: column;
@@ -102,26 +99,33 @@ body {
         border: 2px solid var(--gold);
         padding: 10px;
         border-radius: 5px;
-        gap: 15px; /* 🔹 Espacio entre los elementos del menú cuando se despliega */
+        width: 200px; /* 🔹 Ancho del menú desplegable */
     }
 
     .nav-links.active {
         display: flex; /* 🔹 Muestra el menú cuando esté activo */
+        flex-direction: column; /* 🔹 Asegura que esté en columna */
+        align-items: flex-start; /* 🔹 Alinea los elementos a la izquierda */
     }
 
     .nav-links ul {
         list-style: none;
         padding: 0;
         margin: 0;
+        width: 100%;
     }
 
     .nav-links li {
         margin: 10px 0;
+        text-align: left;
+        width: 100%;
     }
 
     .nav-links a {
         color: var(--gold);
         text-decoration: none;
+        display: block;
+        padding: 10px;
     }
 }
 
