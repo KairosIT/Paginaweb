@@ -111,6 +111,7 @@ body {
         display: flex; /* 🔹 Muestra el menú cuando esté activo */
         flex-direction: column; /* 🔹 Asegura que esté en columna */
         align-items: flex-start; /* 🔹 Alinea los elementos a la izquierda */
+        padding: 5px 10px; /* 🔹 Reducimos el padding interno */
     }
 
     .nav-links ul {
@@ -122,16 +123,13 @@ body {
     }
 
     .nav-links li {
-        width: 100%;
+        margin: 5px 0; /* 🔹 Reducimos el espacio entre opciones */
         text-align: left;
-        margin: 5px 0;
+        width: 100%;
     }
 
     .nav-links a {
-        color: var(--gold);
-        text-decoration: none;
-        display: block;
-        padding: 10px;
+        padding: 8px; /* 🔹 Ajuste de padding para mejor visualización */
     }
 }
 
