@@ -1,11 +1,16 @@
-/* Paleta de colores */
+/* 🔹 CORRECCIÓN: Asegurar compatibilidad en todos los navegadores */
+html {
+    text-size-adjust: 100%; /* Compatible con Chrome, Firefox, Edge y Safari */
+}
+
+/* 🔹 Paleta de colores */
 :root {
     --gold: #D4AF37;
     --dark-gray: #2C2F36;
     --text-light: #E0E0E0;
 }
 
-/* Estilos generales */
+/* 🔹 Estilos generales */
 body {
     font-family: Arial, sans-serif;
     background-color: var(--dark-gray);
@@ -14,7 +19,7 @@ body {
     margin: 0;
 }
 
-/* Encabezado */
+/* 🔹 Encabezado */
 .header {
     display: flex;
     justify-content: space-between;
@@ -40,13 +45,13 @@ body {
     color: var(--gold);
 }
 
-/* Sección Inicio */
+/* 🔹 Sección Inicio */
 .inicio {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('fondo.jpg') no-repeat center center/cover;
+    background: url('fondo.jpg?v=1.0') no-repeat center center/cover; /* Cache Busting */
     text-align: center;
 }
 
@@ -56,13 +61,13 @@ body {
     border-radius: 10px;
 }
 
-/* Secciones */
+/* 🔹 Secciones */
 .section {
     padding: 50px 20px;
     border-top: 2px solid var(--gold);
 }
 
-/* Lista de servicios */
+/* 🔹 Lista de servicios */
 .service-list {
     list-style: none;
     padding: 0;
@@ -76,7 +81,7 @@ body {
     border-radius: 5px;
 }
 
-/* Formulario de contacto */
+/* 🔹 Formulario de contacto */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -94,7 +99,7 @@ body {
     border-radius: 5px;
 }
 
-/* Botón */
+/* 🔹 Botón */
 .gold-button {
     background-color: var(--gold);
     color: var(--dark-gray);
@@ -111,7 +116,7 @@ body {
     transform: scale(1.05);
 }
 
-/* Botón "Volver Arriba" */
+/* 🔹 Botón "Volver Arriba" */
 .btn-arriba {
     display: none;
     position: fixed;
@@ -131,7 +136,7 @@ body {
     box-shadow: 0 0 10px var(--gold);
 }
 
-/* Pie de página */
+/* 🔹 Pie de página */
 .footer {
     background: var(--dark-gray);
     padding: 10px;
