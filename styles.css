@@ -21,7 +21,7 @@ body {
     margin: 0;
 }
 
-/* 🔹 Encabezado */
+/* 🔹 Estilos para el encabezado */
 .header {
     display: flex;
     justify-content: space-between;
@@ -29,8 +29,28 @@ body {
     padding: 15px 20px;
     background-color: var(--dark-gray);
     border-bottom: 2px solid var(--gold);
+    flex-wrap: wrap; /* Permite que los elementos se acomoden en móviles */
 }
 
+/* 🔹 Logo y texto */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 🔹 Ajustar el tamaño del logo */
+.logo-container img {
+    width: 50px; /* Reduce el tamaño en móviles */
+    height: auto;
+}
+
+/* 🔹 Ajuste de título en móviles */
+.logo-container h1 {
+    font-size: 1.5rem; /* Reduce el tamaño del título en pantallas pequeñas */
+}
+
+/* 🔹 Menú de navegación */
 .nav-links {
     list-style: none;
     display: flex;
@@ -43,8 +63,23 @@ body {
     transition: color 0.3s ease;
 }
 
-.nav-links li a:hover {
-    color: var(--gold);
+/* 🔹 RESPONSIVE: Ajustar encabezado en pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Acomoda los elementos en columnas en móviles */
+        text-align: center;
+        padding: 10px;
+    }
+
+    .logo-container {
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column; /* Hace que los enlaces se acomoden en columna */
+        gap: 10px;
+    }
 }
 
 /* 🔹 Sección Inicio */
