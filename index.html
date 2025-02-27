@@ -11,12 +11,15 @@
     
     <!-- Archivo CSS Personalizado -->
     <link rel="stylesheet" href="./styles.css">
+
+    <!-- 🔹 AOS Animations CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 </head>
     
 <body class="bg-dark-gray text-text-light">
 
     <!-- Encabezado -->
-    <header class="header">
+    <header class="header" data-aos="fade-down" data-aos-duration="1000">
         <div class="logo-container">
             <img src="logo.png" alt="Logo Kairos IT SAS" class="logo">
             <h1 class="gold-text">Kairos IT SAS</h1>
@@ -37,7 +40,7 @@
     </header>
 
     <!-- Sección Inicio -->
-    <section id="inicio" class="inicio">
+    <section id="inicio" class="inicio" data-aos="fade-up" data-aos-duration="1200">
         <div class="inicio-content">
             <h2 class="gold-text text-4xl font-bold">Soluciones Tecnológicas en el Momento Oportuno</h2>
             <p class="mt-4">Innovamos en tecnología para potenciar tu empresa.</p>
@@ -46,30 +49,30 @@
     </section>
 
     <!-- Sección Nosotros -->
-    <section id="nosotros" class="section">
+    <section id="nosotros" class="section" data-aos="fade-right" data-aos-duration="1200">
         <h2 class="gold-text text-3xl font-bold">Sobre Nosotros</h2>
         <p>Somos una empresa especializada en desarrollo de software y soporte tecnológico.</p>
     </section>
 
     <!-- Sección Servicios -->
-    <section id="servicios" class="section">
+    <section id="servicios" class="section" data-aos="fade-left" data-aos-duration="1200">
         <h2 class="gold-text text-3xl font-bold">Nuestros Servicios</h2>
         <ul class="service-list">
-            <li>🖥️ Desarrollo de Software</li>
-            <li>📡 Infraestructura y Redes</li>
-            <li>🛠️ Soporte Técnico</li>
+            <li data-aos="zoom-in" data-aos-duration="1000">🖥️ Desarrollo de Software</li>
+            <li data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="200">📡 Infraestructura y Redes</li>
+            <li data-aos="zoom-in" data-aos-duration="1400" data-aos-delay="400">🛠️ Soporte Técnico</li>
         </ul>
     </section>
 
     <!-- Sección Contacto -->
-    <section id="contacto" class="section">
+    <section id="contacto" class="section" data-aos="fade-up" data-aos-duration="1200">
         <h2 class="gold-text text-3xl font-bold">Contáctanos</h2>
         <p>Escríbenos para más información.</p>
         <form action="https://formspree.io/f/tu_correo" method="POST" class="contact-form">
-            <input type="text" name="nombre" placeholder="Tu Nombre" required>
-            <input type="email" name="correo" placeholder="Tu Correo" required>
-            <textarea name="mensaje" placeholder="Mensaje" required></textarea>
-            <button type="submit" class="gold-button">Enviar</button>
+            <input type="text" name="nombre" placeholder="Tu Nombre" required data-aos="flip-left" data-aos-duration="1000">
+            <input type="email" name="correo" placeholder="Tu Correo" required data-aos="flip-left" data-aos-duration="1200" data-aos-delay="200">
+            <textarea name="mensaje" placeholder="Mensaje" required data-aos="flip-left" data-aos-duration="1400" data-aos-delay="400"></textarea>
+            <button type="submit" class="gold-button" data-aos="zoom-in" data-aos-duration="1200">Enviar</button>
         </form>
     </section>
 
@@ -77,14 +80,19 @@
     <button id="btn-arriba" class="btn-arriba">↑</button>
 
     <!-- Pie de página -->
-    <footer class="footer">
+    <footer class="footer" data-aos="fade-up" data-aos-duration="1200">
         &copy; 2025 Kairos IT SAS - Todos los derechos reservados.
     </footer>
+
+    <!-- 🔹 AOS Animations JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 
     <!-- Script para el Menú y "Volver Arriba" -->
     <script src="script.js"></script>
 
 </body>
 </html>
-
 
