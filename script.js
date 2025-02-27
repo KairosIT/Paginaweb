@@ -7,14 +7,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Verificar que Three.js se cargue correctamente
+console.log("Iniciando Three.js...");
+
 // Configuración de la escena
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("scene"), alpha: true });
+
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Creación del reloj de arena digital
+// Creación del reloj de arena
 const geometry = new THREE.ConeGeometry(2, 4, 32);
 const material = new THREE.MeshStandardMaterial({ color: 0xffd700, emissive: 0xffcc00, wireframe: true });
 const hourglass = new THREE.Mesh(geometry, material);
