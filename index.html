@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
     
     <!-- Archivo CSS Personalizado -->
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="styles.css">
 
     <!-- AOS Animations CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
@@ -38,12 +38,10 @@
         </nav>
     </header>
 
-    <!-- Sección Inicio con Video de Fondo -->
+    <!-- Sección Inicio con Animación 3D -->
     <section id="inicio" class="inicio">
-        <video autoplay muted loop id="video-background">
-            <source src="video_inicio.mp4" type="video/mp4">
-            Tu navegador no soporta la reproducción de videos.
-        </video>
+        <!-- Aquí se reemplaza el video por un canvas de Three.js -->
+        <canvas id="scene"></canvas>
         <div class="inicio-content">
             <h2 class="gold-text text-4xl font-bold">Soluciones Tecnológicas en el Momento Oportuno</h2>
             <p class="mt-4">Innovamos en tecnología para potenciar tu empresa.</p>
@@ -92,6 +90,8 @@
     <script>
         AOS.init();
     </script>
+
+    <!-- Agregar el script con la animación -->
     <script src="script.js"></script>
 </body>
 </html>
