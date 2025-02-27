@@ -136,29 +136,51 @@ body {
     }
 }
 
-/* 🔹 Sección Inicio */
+/* 🔹 Sección Inicio con Video de Fondo */
 .inicio {
+    position: relative;
+    width: 100%;
     height: 100vh;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('fondo.jpg?v=1.0') no-repeat center center/cover;
     text-align: center;
 }
 
+#video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
 .inicio-content {
+    position: relative;
     background: rgba(0, 0, 0, 0.6);
     padding: 20px;
     border-radius: 10px;
 }
 
-/* 🔹 Secciones */
+/* 🔹 Sección Nosotros con Imagen de Fondo */
+.bg-nosotros {
+    background: url('nosotros.jpg') no-repeat center center/cover;
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+    color: white;
+}
+
+/* 🔹 Secciones Generales */
 .section {
     padding: 50px 20px;
     border-top: 2px solid var(--gold);
 }
 
-/* 🔹 Lista de servicios */
+/* 🔹 Lista de Servicios */
 .service-list {
     list-style: none;
     padding: 0;
@@ -172,7 +194,7 @@ body {
     border-radius: 5px;
 }
 
-/* 🔹 Formulario de contacto */
+/* 🔹 Formulario de Contacto */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -227,30 +249,30 @@ body {
     box-shadow: 0 0 10px var(--gold);
 }
 
-/* 🔹 Pie de página */
+/* 🔹 Pie de Página */
 .footer {
     background: var(--dark-gray);
     padding: 10px;
     border-top: 2px solid var(--gold);
+    text-align: center;
 }
 
-/* 🔹 BARRA DE DESPLAZAMIENTO NEGRA */
+/* 🔹 Barra de Desplazamiento Negra */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #000; /* 🔹 Fondo negro */
+    background: #000;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #333; /* 🔹 Barra gris oscuro */
+    background: #333;
     border-radius: 5px;
 }
 
 /* 🔹 En Firefox */
 * {
     scrollbar-width: thin;
-    scrollbar-color: #333 #000; /* 🔹 Barra gris oscuro con fondo negro */
+    scrollbar-color: #333 #000;
 }
-
