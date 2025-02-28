@@ -6,39 +6,64 @@ document.addEventListener("DOMContentLoaded", function () {
         navMenu.classList.toggle("active");
     });
 
-    // 🚀 Código de Three.js para el reloj de arena
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    
+
     const canvas = document.getElementById("scene");
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    // Crear geometría de reloj de arena
-    const geometry = new THREE.ConeGeometry(2, 4, 32);
-    const material = new THREE.MeshStandardMaterial({ color: 0xffd700, emissive: 0xffcc00, wireframe: true });
-    const hourglass = new THREE.Mesh(geometry, material);
-    hourglass.position.y = 0;
-    scene.add(hourglass);
+    // 🔥 Fondo de estrellas o partículas
+    const particles = new THREE.BufferGeometry();
+    const positions = [];
+    for (let i = 0; i < 500; i++) {
+        positions.push((Math.random() - 0.5) * 50);
+        positions.push((Math.random() - 0.5) * 50);
+        positions.push((Math.random() - 0.5) * 50);
+    }
+    particles.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
 
-    // Añadir luces
-    const light1 = new THREE.PointLight(0x00aaff, 1.5, 100);
-    light1.position.set(5, 5, 5);
-    scene.add(light1);
+    const particleMaterial = new THREE.PointsMaterial({ color: 0x00aaff, size: 0.1 });
+    const particleSystem = new THREE.Points(particles, particleMaterial);
+    scene.add(particleSystem);
 
-    const light2 = new THREE.PointLight(0xffd700, 1, 100);
-    light2.position.set(-5, -5, -5);
-    scene.add(light2);
+    // 🔥 Reloj de arena real (dos conos)
+    const coneGeometry = new THREE.ConeGeometry(2, 4, 32);
+    const material = new THREE.MeshStandardMaterial({ color: 0xffd700, emissive: 0xffcc00, metalness: 1, roughness: 0.2 });
 
-    camera.position.z = 10;
+    const upperCone = new THREE.Mesh(coneGeometry, material);
+    upperCone.position.y = 2;
+    const lowerCone = new THREE.Mesh(coneGeometry, material);
+    lowerCone.rotation.x = Math.PI; // Volteado
+    lowerCone.position.y = -2;
 
-    // Animación de rotación continua con GSAP
-    gsap.to(hourglass.rotation, { y: Math.PI * 2, duration: 5, repeat: -1, ease: "power1.inOut" });
+    const hourglassGroup = new THREE.Group();
+    hourglassGroup.add(upperCone);
+    hourglassGroup.add(lowerCone);
+    scene.add(hourglassGroup);
+
+    // 🔥 Luces mejoradas
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    const pointLight = new THREE.PointLight(0xffd700, 1.5);
+    pointLight.position.set(5, 5, 5);
+    scene.add(pointLight);
+
+    const blueLight = new THREE.PointLight(0x00aaff, 1);
+    blueLight.position.set(-5, -5, -5);
+    scene.add(blueLight);
+
+    camera.position.z = 15;
+
+    // 🔥 Animación de rotación
+    gsap.to(hourglassGroup.rotation, { y: Math.PI * 2, duration: 10, repeat: -1, ease: "power1.inOut" });
 
     function animate() {
-        requestAnimationFrame(animate);
+        particleSystem.rotation.y += 0.001; // Gira el fondo
         renderer.render(scene, camera);
+        requestAnimationFrame(animate);
     }
     animate();
 
@@ -48,3 +73,4 @@ document.addEventListener("DOMContentLoaded", function () {
         renderer.setSize(window.innerWidth, window.innerHeight);
     });
 });
+
