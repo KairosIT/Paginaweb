@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+
+    
     const menuBtn = document.getElementById("menu-btn");
     const navMenu = document.getElementById("nav-menu");
 
