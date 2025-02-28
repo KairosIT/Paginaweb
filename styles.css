@@ -285,7 +285,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1; /* Para que el contenido se muestre encima */
-    display: block;
+    overflow: hidden;
 }
 
 /* 🔹 Sección de contenido sobre la animación */
