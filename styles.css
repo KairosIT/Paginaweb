@@ -1,71 +1,306 @@
+/* 🔹 Ajustes de compatibilidad */
+html {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* 🔹 Paleta de colores */
 :root {
     --gold: #D4AF37;
     --dark-gray: #2C2F36;
     --text-light: #E0E0E0;
 }
 
+/* 🔹 Estilos generales */
 body {
     font-family: Arial, sans-serif;
     background-color: var(--dark-gray);
     color: var(--text-light);
+    text-align: center;
     margin: 0;
 }
 
+/* 🔹 Estilos del encabezado */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 15px 20px;
     background-color: var(--dark-gray);
     border-bottom: 2px solid var(--gold);
+    flex-wrap: wrap;
+    gap: 10px;
+    position: relative; /* 🔹 Asegura que el botón del menú se posicione correctamente */
 }
 
-.logo {
-    width: 80px;
-}
-
-.nav-links {
+/* 🔹 Contenedor del logo y texto */
+.logo-container {
     display: flex;
-    gap: 30px;
-    list-style: none;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1;
 }
 
+/* 🔹 Tamaño del logo */
+.logo-container img {
+    width: 80px;
+    height: auto;
+}
+
+/* 🔹 Tamaño del texto del título */
+.logo-container h1 {
+    font-size: 1.8rem;
+    white-space: nowrap;
+}
+
+/* 🔹 MENÚ EN PC (Horizontal con espacio) */
+.nav-links {
+    display: flex; /* 🔹 Asegura que el menú esté en fila */
+    list-style: none;
+    gap: 50px; /* 🔹 Mayor separación entre opciones */
+}
+
+/* 🔹 Asegurar que los elementos sean horizontales */
+.nav-links ul {
+    display: flex;
+    gap: 50px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    display: inline-block;
+}
+
+/* 🔹 MENÚ HAMBURGUESA (Oculto en PC) */
 .menu-btn {
     display: none;
-    font-size: 30px;
-    color: var(--gold);
-    cursor: pointer;
 }
 
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
+/* 🔹 MENÚ EN MÓVIL */
+@media screen and (max-width: 768px) {
+    .menu-btn {
+        display: block; /* 🔹 Hace visible el botón ☰ */
+        font-size: 35px; /* 🔹 Botón más grande */
+        background: none;
+        border: none;
+        color: var(--gold);
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
     }
+
+    .nav-links {
+        display: none; /* 🔹 Ocultamos el menú en móviles */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: var(--dark-gray);
+        border: 2px solid var(--gold);
+        padding: 10px;
+        border-radius: 5px;
+        width: 180px; /* 🔹 Ajuste de ancho */
+    }
+
+    .nav-links ul {
+        display: flex;
+        flex-direction: column; /* 🔹 Asegura que el menú se muestre en columna */
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
     .nav-links.active {
         display: flex;
+        flex-direction: column;
+        align-items: center; /* 🔹 Centramos las opciones */
+        padding: 5px 0; /* 🔹 Reducimos el padding interno */
+        width: 150px; /* 🔹 Menú más compacto */
     }
-    .menu-btn {
-        display: block;
+    
+    .nav-links li {
+        margin: 0; /* 🔹 Eliminamos espacio extra entre opciones */
+        text-align: center; /* 🔹 Centramos los textos */
+        width: 100%;
+    }
+    
+    .nav-links a {
+        padding: 4px 0; /* 🔹 Reducimos el espacio vertical entre opciones */
+        width: 100%;
+        text-align: center;
     }
 }
 
+/* 🔹 Sección Inicio con Video de Fondo */
 .inicio {
-    height: 100vh;
     position: relative;
+    width: 100%;
+    height: 100vh;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
+#video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.inicio-content {
+    position: relative;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* 🔹 Sección Nosotros con Imagen de Fondo */
+.bg-nosotros {
+    background: url('nosotros.jpg') no-repeat center center/cover;
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+    color: white;
+}
+
+/* 🔹 Secciones Generales */
+.section {
+    padding: 50px 20px;
+    border-top: 2px solid var(--gold);
+}
+
+/* 🔹 Lista de Servicios */
+.service-list {
+    list-style: none;
+    padding: 0;
+}
+
+.service-list li {
+    background: var(--gold);
+    color: var(--dark-gray);
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+/* 🔹 Formulario de Contacto */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    border: 2px solid var(--gold);
+    background-color: var(--dark-gray);
+    color: var(--text-light);
+    border-radius: 5px;
+}
+
+/* 🔹 Botón */
+.gold-button {
+    background-color: var(--gold);
+    color: var(--dark-gray);
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.gold-button:hover {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+    transform: scale(1.05);
+}
+
+/* 🔹 Botón "Volver Arriba" */
+.btn-arriba {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--gold);
+    color: var(--dark-gray);
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-arriba:hover {
+    box-shadow: 0 0 10px var(--gold);
+}
+
+/* 🔹 Pie de Página */
+.footer {
+    background: var(--dark-gray);
+    padding: 10px;
+    border-top: 2px solid var(--gold);
+    text-align: center;
+}
+
+/* 🔹 Barra de Desplazamiento Negra */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 5px;
+}
+
+/* 🔹 En Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #333 #000;
+}
+
+/* 🔹 Ajustes del Canvas de Three.js */
 #scene {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: -1; /* Para que el contenido se muestre encima */
+    overflow: hidden;
 }
 
-.neon-text {
-    color: var(--gold);
-    text-shadow: 0 0 5px var(--gold), 0 0 10px var(--gold);
+/* 🔹 Sección de contenido sobre la animación */
+.inicio {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.inicio-content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1;
 }
