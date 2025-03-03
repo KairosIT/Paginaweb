@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kairos IT SAS - Soluciones tecnológicas innovadoras para tu empresa.">
@@ -39,10 +38,12 @@
         </nav>
     </header>
 
-    <!-- Sección Inicio con Animación 3D -->
+    <!-- Sección Inicio con Video de Fondo -->
     <section id="inicio" class="inicio">
-        <!-- Aquí se reemplaza el video por un canvas de Three.js -->
-        <canvas id="scene"></canvas>
+        <video autoplay muted loop id="video-background">
+            <source src="video_inicio.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de videos.
+        </video>
         <div class="inicio-content">
             <h2 class="gold-text text-4xl font-bold">Soluciones Tecnológicas en el Momento Oportuno</h2>
             <p class="mt-4">Innovamos en tecnología para potenciar tu empresa.</p>
@@ -92,7 +93,6 @@
         AOS.init();
     </script>
 
-    <!-- Agregar el script con la animación -->
     <script src="script.js"></script>
 </body>
 </html>
