@@ -167,7 +167,7 @@ body {
 
 /* 🔹 Sección Nosotros con Imagen de Fondo */
 .bg-nosotros {
-    background: url('nosotros.jpg') no-repeat center center/cover;
+    background-image: url('/Paginaweb/assets/images/nosotros.jpg') no-repeat center center/cover;
     padding: 100px 20px;
     text-align: center;
     position: relative;
