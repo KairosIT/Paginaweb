@@ -167,10 +167,13 @@ body {
 
 /* 🔹 Sección Nosotros con Imagen de Fondo */
 .bg-nosotros {
-    background-image: url('/Paginaweb/assets/images/nosotros.jpg');
+    background-image: url('assets/images/nosotros.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding: 100px 20px;
+    text-align: center;
+    color: white;
 }
 
 /* 🔹 Secciones Generales */
