@@ -14,10 +14,6 @@
 
     <!-- AOS Animations CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-
-    <!-- Three.js y GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body class="bg-dark-gray text-text-light">
 
@@ -25,11 +21,13 @@
     <header class="header">
         <div class="logo-container">
             <img src="logo.png" alt="Logo Kairos IT SAS" class="logo">
-            <h1 class="gold-text neon-text">Kairos IT SAS</h1>
+            <h1 class="gold-text">Kairos IT SAS</h1>
         </div>
 
+        <!-- Botón del Menú Hamburguesa (Solo en Móviles) -->
         <button id="menu-btn" class="menu-btn">☰</button>
 
+        <!-- Menú de Navegación -->
         <nav id="nav-menu" class="nav-links">
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
@@ -40,8 +38,9 @@
         </nav>
     </header>
 
-    <!-- Sección Inicio con Canvas 3D -->
+    <!-- Sección Inicio con Animación 3D -->
     <section id="inicio" class="inicio">
+        <!-- Aquí se reemplaza el video por un canvas de Three.js -->
         <canvas id="scene"></canvas>
         <div class="inicio-content">
             <h2 class="gold-text text-4xl font-bold">Soluciones Tecnológicas en el Momento Oportuno</h2>
@@ -50,15 +49,26 @@
         </div>
     </section>
 
-    <!-- Sección Nosotros -->
+    <!-- Sección Nosotros con Imagen de Fondo -->
     <section id="nosotros" class="section bg-nosotros">
         <h2 class="gold-text text-3xl font-bold">Sobre Nosotros</h2>
         <p>Somos una empresa especializada en desarrollo de software y soporte tecnológico.</p>
     </section>
 
+    <!-- Sección Servicios -->
+    <section id="servicios" class="section">
+        <h2 class="gold-text text-3xl font-bold">Nuestros Servicios</h2>
+        <ul class="service-list">
+            <li>🖥️ Desarrollo de Software</li>
+            <li>📡 Infraestructura y Redes</li>
+            <li>🛠️ Soporte Técnico</li>
+        </ul>
+    </section>
+
     <!-- Sección Contacto -->
     <section id="contacto" class="section">
         <h2 class="gold-text text-3xl font-bold">Contáctanos</h2>
+        <p>Escríbenos para más información.</p>
         <form action="https://formspree.io/f/tu_correo" method="POST" class="contact-form">
             <input type="text" name="nombre" placeholder="Tu Nombre" required>
             <input type="email" name="correo" placeholder="Tu Correo" required>
@@ -67,14 +77,21 @@
         </form>
     </section>
 
+    <!-- Botón Flotante "Volver Arriba" -->
     <button id="btn-arriba" class="btn-arriba">↑</button>
 
+    <!-- Pie de Página -->
     <footer class="footer">
         &copy; 2025 Kairos IT SAS - Todos los derechos reservados.
     </footer>
 
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>AOS.init();</script>
+    <script>
+        AOS.init();
+    </script>
+
+    <!-- Agregar el script con la animación -->
     <script src="script.js"></script>
 </body>
 </html>
