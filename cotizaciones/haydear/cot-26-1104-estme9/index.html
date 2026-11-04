@@ -117,6 +117,19 @@ input[type=range]{width:100%;accent-color:var(--cy)}
 @media(max-width:760px){.close{grid-template-columns:1fr}.close .logo{max-width:200px}}
 .btn{display:inline-block;background:var(--cy);color:#04102e;font-weight:700;padding:14px 26px;border-radius:999px;text-decoration:none;margin-top:22px;border:0;cursor:pointer;font-size:16px}
 .small{color:var(--mut);font-size:13px;margin-top:40px;text-align:center}
+
+.picker{margin:30px 0 30px;padding:22px 24px;border:1px solid var(--cy);border-radius:18px;background:linear-gradient(180deg,rgba(0,194,255,.10),rgba(0,194,255,.03))}
+.picker .hint{display:flex;align-items:center;gap:12px;font-weight:700;font-size:17px;margin-bottom:14px}
+.picker .hint .arr{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--cy);color:#04102e;animation:bob 1.2s ease-in-out infinite}
+.picker .hint small{display:block;font-weight:400;color:var(--tx2);font-size:14.5px}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.tabs{margin:0!important;padding:6px!important}
+.tabs button{font-size:17px!important;padding:14px 26px!important;position:relative}
+.tabs.hintme{animation:ring 1.8s ease-in-out infinite}
+@keyframes ring{0%,100%{box-shadow:0 0 0 0 rgba(0,194,255,.55)}50%{box-shadow:0 0 0 10px rgba(0,194,255,0)}}
+.rec{display:inline-block;margin-left:8px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:#FFD34D;color:#1b1400;vertical-align:middle}
+.tabs button.on .rec{background:#04102e;color:#FFD34D}
+@media(max-width:600px){.tabs{display:flex;flex-direction:column;border-radius:16px}.tabs button{border-radius:12px}}
 </style>
 </head>
 <body>
@@ -164,7 +177,7 @@ input[type=range]{width:100%;accent-color:var(--cy)}
 <div class="eyebrow rv">02 · Validación de documentos</div>
 <h2 class="rv">Elija el nivel de revisión</h2>
 <p class="lead rv">Que estén todos los documentos lo verifica el sistema, sin IA. La revisión de su contenido es opcional y tiene dos modalidades. Seleccione una para ver cómo funciona y cuánto cuesta.</p>
-<div class="tabs rv" role="tablist"><button data-o="none">Sin revisión</button><button data-o="A" class="on">Opción A · en el servidor</button><button data-o="B">Opción B · IA en la nube</button></div>
+<div class="picker rv"><div class="hint"><span class="arr">↓</span><div>Toque una opción para cambiarla<small>Le mostramos la Opción A, la recomendada. El detalle y la inversión total se actualizan solos.</small></div></div><div class="tabs hintme" role="tablist"><button data-o="none">Sin revisión</button><button data-o="A" class="on">Opción A · en el servidor<span class="rec">Recomendada</span></button><button data-o="B">Opción B · IA en la nube</button></div></div>
 <div class="opt" id="optview"></div>
 <div class="callout rv"><b>Decisión final:</b> en todas las opciones la toma el revisor en el panel. Ninguna opción certifica que una firma o un sello sean auténticos.</div>
 </div></section>
@@ -172,7 +185,7 @@ input[type=range]{width:100%;accent-color:var(--cy)}
 <section id="inversion" class="alt"><div class="wrap">
 <div class="eyebrow rv">03 · Inversión</div>
 <h2 class="rv">Valores por ítem</h2>
-<p class="lead rv" id="invlead"></p>
+<p class="lead rv" id="invlead"></p><div class="picker rv" style="margin-top:22px"><div class="hint"><span class="arr">↓</span><div>Cambie la opción aquí y vea cómo cambia el total</div></div><div class="tabs hintme" role="tablist"><button data-o="none">Sin revisión</button><button data-o="A" class="on">Opción A · en el servidor<span class="rec">Recomendada</span></button><button data-o="B">Opción B · IA en la nube</button></div></div>
 <div class="tblwrap rv" style="margin-top:28px"><table><thead><tr><th>Ítem</th><th>Descripción</th><th class="r">Valor</th></tr></thead><tbody id="items"></tbody></table></div>
 <div class="tot rv"><span>Subtotal</span><b id="sub"></b><span>IVA (19 %)</span><b id="iva"></b><span style="align-self:end">Total</span><b class="big" id="tot"></b></div>
 <div class="grid g2" style="margin-top:50px">
@@ -238,12 +251,12 @@ function render(){
  document.getElementById('items').innerHTML=items.map(i=>`<tr class="${i[0]==='07'&&!inc?'off':''}"><td>${i[0]}</td><td>${i[1]}</td><td class="r">${fmt(i[2])}</td></tr>`).join('');
  document.getElementById('sub').textContent=fmt(sub);document.getElementById('iva').textContent=fmt(iva);
  count(document.getElementById('tot'),sub+iva);
- document.getElementById('invlead').textContent=`Mostrando: ${o.t}. Cambie la opción en la sección anterior para ver el valor sin revisión ($ 8.568.000) o con revisión ($ 10.710.000).`;
+ document.getElementById('invlead').textContent=`Opción seleccionada: ${o.t}.`;
  document.getElementById('estbox').style.display=cur==='B'?'block':'none';
  document.getElementById('mcost').textContent=cur==='B'?'Pago por uso de la IA, en una cuenta prepagada a nombre del cliente.':'Con la opción elegida no hay costos mensuales. Solo la Opción B tiene un pago por uso de la IA.';
 }
 let tv=0;function count(el,to){const from=tv,t0=performance.now();tv=to;(function f(t){const p=Math.min(1,(t-t0)/700);el.textContent=fmt(from+(to-from)*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)}
-document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{cur=b.dataset.o;render()});
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{cur=b.dataset.o;document.querySelectorAll('.tabs').forEach(t=>t.classList.remove('hintme'));render()});
 const cs=document.getElementById('cases');function est(){document.getElementById('cn').textContent=(+cs.value).toLocaleString('es-CO');document.getElementById('cv').textContent='hasta USD '+(cs.value*5/1000).toLocaleString('es-CO',{maximumFractionDigits:2})}
 cs.oninput=est;est();render();
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');if(e.target.id==='tl')e.target.querySelectorAll('.seg').forEach((s,i)=>setTimeout(()=>{s.style.left=s.dataset.l+'%';s.style.width=s.dataset.w+'%'},i*180));if(e.target.id==='flow')runFlow();io.unobserve(e.target)}}),{threshold:.2});
