@@ -130,6 +130,17 @@ input[type=range]{width:100%;accent-color:var(--cy)}
 .rec{display:inline-block;margin-left:8px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:#FFD34D;color:#1b1400;vertical-align:middle}
 .tabs button.on .rec{background:#04102e;color:#FFD34D}
 @media(max-width:600px){.tabs{display:flex;flex-direction:column;border-radius:16px}.tabs button{border-radius:12px}}
+
+.tc{border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--bg2);transition:all .3s;cursor:pointer}
+.tc.sel{border-color:var(--cy);box-shadow:0 0 0 3px rgba(0,194,255,.18)}
+.tc h4{font-size:17px;margin-bottom:10px}
+.tc .ln{display:flex;justify-content:space-between;font-size:14.5px;color:var(--tx2);padding:4px 0}
+.tc .ln b{color:var(--tx)}
+.tc .yr{border-top:1px solid var(--line);margin-top:8px;padding-top:10px;display:flex;justify-content:space-between;align-items:baseline}
+.tc .yr b{font-family:Inter;font-size:22px}
+.tc .pro{font-size:13.5px;color:var(--tx2);margin-top:10px}
+.tc .pro b{color:var(--cy)}
+.rv.out{opacity:0;transform:translateY(26px)}
 </style>
 </head>
 <body>
@@ -179,6 +190,14 @@ input[type=range]{width:100%;accent-color:var(--cy)}
 <p class="lead rv">Que estén todos los documentos lo verifica el sistema, sin IA. La revisión de su contenido es opcional y tiene dos modalidades. Seleccione una para ver cómo funciona y cuánto cuesta.</p>
 <div class="picker rv"><div class="hint"><span class="arr">↓</span><div>Toque una opción para cambiarla<small>Le mostramos la Opción A, la recomendada. El detalle y la inversión total se actualizan solos.</small></div></div><div class="tabs hintme" role="tablist"><button data-o="none">Sin revisión</button><button data-o="A" class="on">Opción A · en el servidor<span class="rec">Recomendada</span></button><button data-o="B">Opción B · IA en la nube</button></div></div>
 <div class="opt" id="optview"></div>
+<div class="card rv" id="tco" style="margin-top:26px">
+<h3 style="font-size:22px;margin:0 0 4px">¿Cuánto cuesta cada opción en el primer año?</h3>
+<p style="color:var(--tx2);font-size:15px;margin-bottom:16px">La inversión inicial de la Opción A y la B es la misma; la diferencia está en el costo mensual y en dónde se procesan los documentos. Mueva la barra según los casos que esperan recibir al mes.</p>
+<label for="cases" style="font-size:15px;color:var(--tx2)">Casos al mes: <b id="cn" style="color:var(--tx);font-size:18px">500</b></label>
+<input id="cases" type="range" min="50" max="5000" step="50" value="500" style="margin:8px 0 18px">
+<div class="grid g3" id="tcogrid"></div>
+<p style="font-size:12.5px;color:var(--mut);margin-top:12px">Costo de la IA estimado en hasta USD 5 por cada 1.000 casos, a una TRM aproximada de $ 3.200; el valor real se confirma en las pruebas. Valores con IVA incluido.</p>
+</div>
 <div class="callout rv"><b>Decisión final:</b> en todas las opciones la toma el revisor en el panel. Ninguna opción certifica que una firma o un sello sean auténticos.</div>
 </div></section>
 
@@ -191,7 +210,7 @@ input[type=range]{width:100%;accent-color:var(--cy)}
 <div class="grid g2" style="margin-top:50px">
 <div class="card rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Licencias nuevas: $ 0</h3><p>Usa su Microsoft 365 Business Basic y su servidor interno. No compra Adobe, Copilot, Claude Pro ni Power Automate Premium.</p></div>
 <div class="card rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3>Único costo mensual posible</h3><p id="mcost">Con la Opción B: pago por uso de la IA, en una cuenta prepagada a nombre del cliente.</p>
-<div class="est" id="estbox"><label for="cases" style="font-size:14px;color:var(--tx2)">Casos al mes: <b id="cn" style="color:var(--tx)">500</b></label><input id="cases" type="range" min="50" max="5000" step="50" value="500"><div style="font-size:15px">Estimado: <b id="cv" style="color:var(--cy)"></b> al mes</div><div style="font-size:12.5px;color:var(--mut);margin-top:4px">Estimación de hasta USD 5 por cada 1.000 casos; se confirma en las pruebas.</div></div></div>
+</div>
 </div>
 </div></section>
 
@@ -251,19 +270,27 @@ function render(){
  document.getElementById('items').innerHTML=items.map(i=>`<tr class="${i[0]==='07'&&!inc?'off':''}"><td>${i[0]}</td><td>${i[1]}</td><td class="r">${fmt(i[2])}</td></tr>`).join('');
  document.getElementById('sub').textContent=fmt(sub);document.getElementById('iva').textContent=fmt(iva);
  count(document.getElementById('tot'),sub+iva);
- document.getElementById('invlead').textContent=`Opción seleccionada: ${o.t}.`;
- document.getElementById('estbox').style.display=cur==='B'?'block':'none';
- document.getElementById('mcost').textContent=cur==='B'?'Pago por uso de la IA, en una cuenta prepagada a nombre del cliente.':'Con la opción elegida no hay costos mensuales. Solo la Opción B tiene un pago por uso de la IA.';
+ document.getElementById('invlead').textContent=`Opción seleccionada: ${o.t}.`;est();
+ document.getElementById('mcost').textContent=cur==='B'?'Pago por uso de la IA, en una cuenta prepagada a nombre del cliente. Vea el estimado en la sección de validación.':'Con la opción elegida no hay costos mensuales. Solo la Opción B tiene un pago por uso de la IA.';
 }
 let tv=0;function count(el,to){const from=tv,t0=performance.now();tv=to;(function f(t){const p=Math.min(1,(t-t0)/700);el.textContent=fmt(from+(to-from)*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)}
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{cur=b.dataset.o;document.querySelectorAll('.tabs').forEach(t=>t.classList.remove('hintme'));render()});
-const cs=document.getElementById('cases');function est(){document.getElementById('cn').textContent=(+cs.value).toLocaleString('es-CO');document.getElementById('cv').textContent='hasta USD '+(cs.value*5/1000).toLocaleString('es-CO',{maximumFractionDigits:2})}
-cs.oninput=est;est();render();
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');if(e.target.id==='tl')e.target.querySelectorAll('.seg').forEach((s,i)=>setTimeout(()=>{s.style.left=s.dataset.l+'%';s.style.width=s.dataset.w+'%'},i*180));if(e.target.id==='flow')runFlow();io.unobserve(e.target)}}),{threshold:.2});
+const cs=document.getElementById('cases');const TRM=3200;
+const TC=[['none','Sin revisión',8568000,0,'El revisor hace toda la revisión del contenido.'],['A','Opción A · en el servidor',10710000,0,'<b>Ventaja:</b> los documentos no salen de su servidor y no hay pagos mensuales.'],['B','Opción B · IA en la nube',10710000,1,'<b>Ventaja:</b> detecta firmas y sellos y lee fotos o escaneos. Requiere recargar saldo.']];
+function est(){const n=+cs.value;document.getElementById('cn').textContent=n.toLocaleString('es-CO');
+ document.getElementById('tcogrid').innerHTML=TC.map(t=>{const m=t[3]?Math.round(n*5/1000*TRM*1.19):0;return `<div class="tc ${t[0]===cur?'sel':''}" data-o="${t[0]}"><h4>${t[1]}${t[0]==='A'?' <span class="rec">Recomendada</span>':''}</h4><div class="ln"><span>Inversión inicial</span><b>${fmt(t[2])}</b></div><div class="ln"><span>Costo mensual</span><b>${m?'≈ '+fmt(m):'$ 0'}</b></div><div class="yr"><span style="color:var(--tx2);font-size:14px">Primer año</span><b>${fmt(t[2]+m*12)}</b></div><div class="pro">${t[4]}</div></div>`}).join('');
+ document.querySelectorAll('.tc').forEach(c=>c.onclick=()=>{cur=c.dataset.o;document.querySelectorAll('.tabs').forEach(t=>t.classList.remove('hintme'));render()});}
+cs.oninput=est;render();
+let flowT=null;
+const io=new IntersectionObserver(es=>es.forEach(e=>{const t=e.target;if(e.isIntersecting){t.classList.add('in');
+ if(t.id==='tl')t.querySelectorAll('.seg').forEach((s,i)=>setTimeout(()=>{s.style.width=s.dataset.w+'%'},i*180));
+ if(t.id==='flow')runFlow();}
+ else if(e.boundingClientRect.top>0){t.classList.remove('in');if(t.id==='tl')t.querySelectorAll('.seg').forEach(s=>s.style.width='0');if(t.id==='flow')stopFlow();}}),{threshold:.15});
 document.querySelectorAll('.rv').forEach(e=>io.observe(e));
 if(!('IntersectionObserver' in window))document.querySelectorAll('.rv').forEach(e=>e.classList.add('in'));
 document.querySelectorAll('.seg').forEach(s=>s.style.left=s.dataset.l+'%');
-function runFlow(){const st=[...document.querySelectorAll('#flow .step')],bar=document.querySelector('#flow .bar i');let k=0;(function n(){st.forEach((s,i)=>s.classList.toggle('on',i<=k));bar.style.width=(k/(st.length-1)*100)+'%';k=(k+1)%(st.length+1);if(k===st.length){setTimeout(()=>{k=0;n()},1800)}else setTimeout(n,900)})()}
+function stopFlow(){clearTimeout(flowT);flowT=null;document.querySelectorAll('#flow .step').forEach(s=>s.classList.remove('on'));document.querySelector('#flow .bar i').style.width='0'}
+function runFlow(){if(flowT)return;const st=[...document.querySelectorAll('#flow .step')],bar=document.querySelector('#flow .bar i');let k=0;(function n(){st.forEach((s,i)=>s.classList.toggle('on',i<=k));bar.style.width=(Math.min(k,st.length-1)/(st.length-1)*100)+'%';k++;if(k>st.length-1){flowT=setTimeout(()=>{k=0;n()},2200)}else flowT=setTimeout(n,900)})()}
 </script>
 </body>
 </html>
